@@ -1,0 +1,42 @@
+
+---
+const currentPage = Astro.url.pathname;
+---
+
+<nav class="fixed top-0 left-0 w-full h-16  flex justify-between items-center px-6 gap-x-4 bg-[#ffe4c4]">
+
+    <a href="/">
+        <img 
+            class="mt-5 w-auto h-auto sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-96 lg:h-60" 
+            src="/Logo_guias.png" 
+            alt="logo tour" 
+        >
+    </a>
+
+    <!-- Menú Hamburguesa (Solo visible en pantallas pequeñas) -->
+    <div class="sm:hidden">
+        <button id="hamburger-btn" class="flex items-center px-3 py-2 border rounded text-black border-black">
+            <svg class="fill-current h-6 w-6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 6h18M3 12h18m-6 6h6"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Menú de Navegación -->
+    <div id="menu" class="hidden sm:flex flex-col sm:flex-row gap-y-4 sm:gap-x-10 text-center sm:text-left p-4 sm:p-0">
+        <a href="/" class={`font-bold text-lg sm:text-base ${currentPage === '/' ? '' : ''}`}>Home</a>
+        <a href="/LaPeriquera" class={`font-bold text-lg sm:text-base ${currentPage === '/LaPeriquera' ? 'text-blue-500' : ''}`}>Cascada La Periquera</a>
+        <a href="/LaPiedraTrabada" class={`font-bold text-lg sm:text-base ${currentPage === '/piedraTrabada' ? 'text-blue-500' : ''}`}>La Peña Trabada</a>
+        <a href="/quienesSomos" class={`font-bold text-lg sm:text-base ${currentPage === '/quienesSomos' ? 'text-blue-500' : ''}`}>Quienes somos</a>
+    </div>
+</nav>
+
+
+<script is:inline>
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const menu = document.getElementById('menu');
+
+    hamburgerBtn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+    });
+</script>
