@@ -6,7 +6,6 @@ interface Props {
 const { title } = Astro.props;
 import Whatsapp from '../components/Whatsapp.astro';
 import Navbar from '../components/Navbar.astro';
-
 ---
 
 <!doctype html>
@@ -19,7 +18,7 @@ import Navbar from '../components/Navbar.astro';
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="container mx-auto mt-5 text-center"> 
+	<body class=""> 
 		<slot />
 		<Navbar />
 		<Whatsapp />
