@@ -18,11 +18,10 @@ import Navbar from '../components/Navbar.astro';
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class=""> 
-		<slot />
+	<body >
 		<Navbar />
 		<Whatsapp />
-
+		<slot /> 
 	</body>
 </html>
 <style is:global>
