@@ -1,9 +1,8 @@
-
 ---
 const currentPage = Astro.url.pathname;
 ---
 
-<nav class="fixed top-0 left-0 w-full h-16  flex justify-between items-center px-6 gap-x-4 bg-[#ffe4c4] z-50">
+<nav id="navbar" class="fixed top-0 left-0 w-full h-16 flex justify-between items-center px-6 md:px-40 gap-x-10 bg-[#ffe4c4] z-50 transition-all duration-300 ease-in-out">
 
     <a href="/">
         <img 
@@ -17,26 +16,32 @@ const currentPage = Astro.url.pathname;
     <div class="flex items-center sm:hidden">
         <button id="hamburger-btn" class="flex items-center px-3 py-2 border rounded text-black border-black">
             <span class="text-lg font-semibold mr-2">Menu</span>
-            
         </button>
     </div>
+
     <!-- Menú de Navegación -->
     <div id="menu" class="hidden sm:flex flex-col sm:flex-row gap-y-4 sm:gap-x-10 text-center sm:text-left p-4 sm:p-0">
-        <a href="/" class={`font-bold text-lg sm:text-base ${currentPage === '/' ? '' : ''}`}>Home</a>
+        <a href="/" class={`font-bold text-lg sm:text-base ${currentPage === '/' ? 'text-blue-500' : ''}`}>Home</a>
         <a href="/LaPeriquera" class={`font-bold text-lg sm:text-base ${currentPage === '/LaPeriquera' ? 'text-blue-500' : ''}`}>Cascada La Periquera</a>
         <a href="/LaPiedraTrabada" class={`font-bold text-lg sm:text-base ${currentPage === '/LaPiedraTrabada' ? 'text-blue-500' : ''}`}>La Peña Trabada</a>
-        <a href="/comollegar" class={`font-bold text-lg sm:text-base ${currentPage === '/comollegar' ? 'text-blue-500' : ''}`}>¿Como llegar?</a>
+        <a href="/comollegar" class={`font-bold text-lg sm:text-base ${currentPage === '/comollegar' ? 'text-blue-500' : ''}`}>¿Cómo llegar?</a>
     </div>
 </nav>
 
-
 <script is:inline>
-  const hamburgerBtn = document.getElementById('hamburger-btn');
-  const menu = document.getElementById('menu');
-  const hamburgerIcon = document.getElementById('hamburger-icon');
-
-  hamburgerBtn.addEventListener('click', () => {
-    menu.classList.toggle('hidden');
-    hamburgerIcon.classList.toggle('transform'); // Agregar clase para animación (opcional)
-  });
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const menu = document.getElementById('menu');
+    const navbar = document.getElementById('navbar');
+  
+    hamburgerBtn.addEventListener('click', () => {
+      // Mostrar/ocultar el menú
+      menu.classList.toggle('hidden');
+      
+      // Si el menú está visible, expandir el navbar en pantallas pequeñas
+      if (!menu.classList.contains('hidden')) {
+        navbar.classList.add('h-auto', 'sm:h-[400px]'); // Expandir la altura
+      } else {
+        navbar.classList.remove('h-auto', 'sm:h-[400px]'); // Restaurar la altura original
+      }
+    });
 </script>
